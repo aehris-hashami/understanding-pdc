@@ -1,4 +1,4 @@
-Core chapters
+#Core chapters
 
     Introduction to Parallel and Distributed Computing.
 
@@ -60,7 +60,7 @@ Core chapters
 
     Big data analytics, machine learning, computer vision, scientific simulation.
 
-Real-world problem areas
+#Real-world problem areas
 
 These are the kinds of problems PDC is used to solve in industry and research: large-scale data processing, scientific simulation, machine learning training, computer vision pipelines, distributed storage, cloud services, and HPC workloads.
 
@@ -84,7 +84,7 @@ These are the kinds of problems PDC is used to solve in industry and research: l
 
     IoT and sensor-data aggregation.
 
-Technologies to know
+#Technologies to know
 
 A practical PDC toolkit includes classic and modern technologies: OpenMP for shared-memory parallelism, MPI for message passing, CUDA for GPUs, pthreads for threading, Hadoop-style distributed data systems, and cloud platforms for elastic distributed execution.
 
@@ -96,7 +96,7 @@ A practical PDC toolkit includes classic and modern technologies: OpenMP for sha
 
     Conceptual models: consistency, atomicity, consensus, synchronization, fault tolerance, load balancing.
 
-Fast study order
+##Fast study order
 
     Basic definitions and performance metrics.
 
