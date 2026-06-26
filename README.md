@@ -1,123 +1,95 @@
-#Core chapters
+# Parallel & Distributive Computing — Categorized Mastery Roadmap
 
-    Introduction to Parallel and Distributed Computing.
+Each category bundles: **core topics + the real-world problems they solve + the technologies (old/modern) used.** Study top to bottom — each category leans on the one before it.
 
-    Why parallelism and why distribution.
+---
 
-    Sequential vs parallel vs distributed thinking.
+## 1. Fundamentals — Mental Model & Metrics
+**Topics:** Intro to PDC · why parallelism vs why distribution · sequential vs parallel vs distributed thinking · performance metrics (speedup, efficiency, scalability, latency, throughput)
+**Why it matters:** This is the lens you apply to *every* problem below — before picking a tool, you decide "is this compute-bound (parallelize) or coordination-bound (distribute)?"
+**Industry framing:** every problem in this list is ultimately justified by these metrics — e.g. "can we get 10x speedup" or "can this scale to 1M users."
 
-    Performance metrics: speedup, efficiency, scalability, latency, throughput.
+---
 
-    CPU architecture and memory hierarchy.
+## 2. Hardware Architecture & Memory Hierarchy
+**Topics:** CPU architecture & memory hierarchy · cache, cache coherence, NUMA · shared vs distributed memory · Flynn's taxonomy · SIMD/MIMD, multicore, manycore, GPU systems
+**Industry problems:** video processing & rendering · genomics/bioinformatics (compute-heavy pipelines) · weather/climate modeling (raw FLOPs) · scientific simulation
+**Technologies:**
+- *Old/classic:* vector processors, multiprocessors, pipeline/array processors, shared-memory SMP
+- *Still important:* NUMA-aware programming
+- *Modern:* GPUs, heterogeneous computing (CPU+GPU+accelerator)
 
-    Cache, cache coherence, NUMA, shared vs distributed memory.
+---
 
-    Flynn’s taxonomy and architectural classification.
+## 3. Parallel Programming Models
+**Topics:** task parallelism · data parallelism · process-centric models · shared-memory vs message-passing
+**Industry problems:** large-scale AI/ML training (data parallelism) · video rendering (task parallelism) · scientific simulation
+**Technologies:** OpenMP, pthreads (shared-memory) · MPI (message-passing) · CUDA (GPU data-parallel)
 
-    SIMD, MIMD, multicore, manycore, GPU systems.
+---
 
-    Parallel programming models.
+## 4. Parallel Algorithm Design
+**Topics:** decomposition & partitioning · scheduling & load balancing · contention · communication overhead
+**Industry problems:** real-time recommendation systems · fraud/anomaly detection · search indexing (parallel crawl/index builds)
+**Conceptual tools:** map-reduce pattern, work-stealing, divide & conquer — the design patterns that sit underneath every framework in category 10
 
-    Task parallelism, data parallelism, process-centric models, shared-memory and message-passing.
+---
 
-    Parallel algorithm design.
+## 5. Synchronization & Coordination
+**Topics:** mutual exclusion · barriers · atomicity · critical sections · consensus basics
+**Industry problems:** financial risk/pricing simulation (coordinated parallel runs must agree on state) · any multi-threaded real-time system
+**Conceptual tools:** locks, semaphores, atomics — the primitives consensus algorithms (ch. 9) are built on top of
 
-    Decomposition, partitioning, scheduling, load balancing, contention, communication overhead.
+---
 
-    Synchronization and coordination.
+## 6. Distributed System Foundations & Communication
+**Topics:** execution & communication models · middleware · global state · synchronous vs asynchronous systems · message passing · shared-state issues
+**Industry problems:** distributed databases & storage · IoT/sensor-data aggregation · search engine indexing (distributed crawlers talking to each other)
+**Conceptual tools:** this is where "parallel" thinking stops being enough and "distributed" thinking (no shared clock, no shared memory, partial failure) takes over
 
-    Mutual exclusion, barriers, atomicity, critical sections, consensus basics.
+---
 
-    Distributed system foundations.
+## 7. Cloud Computing, HPC & Storage Systems
+**Topics:** cloud architecture — services, storage, data management, elastic scaling · HPC & cluster computing — supercomputers, clusters, high-performance workloads
+**Industry problems:** large-scale AI/ML training infrastructure · weather/climate modeling (supercomputer-class HPC) · genomics/bioinformatics · distributed databases
+**Technologies:** cloud platforms (elastic compute/storage) · Hadoop-style distributed storage & processing · HPC clusters/supercomputers
 
-    Execution models, communication models, middleware, global state.
+---
 
-    Communication and coordination in distributed systems.
+## 8. Performance Engineering, Profiling & Optimization
+**Topics:** benchmarking · bottleneck analysis · optimization tuning
+**Industry problems:** real-time recommendation systems (latency budgets) · video rendering pipelines · financial pricing simulation (must finish within a time window)
+**Skill outcome:** given a slow parallel/distributed system, find *where* time is lost (compute, communication, or contention) and fix it
 
-    Synchronous vs asynchronous systems, message passing, shared-state issues.
+---
 
-    Cloud computing architecture.
+## 9. Fault Tolerance, Reliability & Consistency
+**Topics:** recovery · replication · failure handling · consistency tradeoffs
+**Industry problems:** distributed databases & storage · fraud detection (must never go down) · financial systems · large-scale AI training (checkpointing for long jobs)
+**Conceptual tools:** this is where consensus (ch. 5) gets applied at scale — replication protocols, quorum reads/writes, eventual vs strong consistency
 
-    Cloud services, storage, data management, elastic scaling.
+---
 
-    HPC and cluster computing.
+## 10. Frameworks, Advanced Applications & Capstone
+**Topics:** OpenMP, MPI, CUDA, pthreads · Hadoop-style distributed storage/processing · big data analytics · machine learning · computer vision · scientific simulation
+**Industry problems (full sweep — pick a few to build toward):**
+- Search engines & indexing
+- Financial risk & pricing simulation
+- Weather & climate modeling
+- Genomics & bioinformatics
+- Video processing & rendering
+- Real-time recommendation systems
+- Distributed databases & storage
+- Large-scale AI/ML training
+- Fraud & anomaly detection
+- IoT & sensor-data aggregation
 
-    Supercomputers, clusters, high-performance workloads.
+This category is where every earlier category gets exercised at once: hardware choice (2) + programming model (3) + algorithm design (4) + sync (5) + distributed comms (6) + cloud/HPC deployment (7) + tuning (8) + fault tolerance (9), applied to one real system end to end.
 
-    Performance tuning and profiling.
+---
 
-    Benchmarking, bottleneck analysis, optimization.
+## Fast Study Order (same as categories above, in sequence)
+1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10
 
-    Fault tolerance and reliability.
-
-    Recovery, replication, failure handling, consistency tradeoffs.
-
-    Parallel and distributed frameworks.
-
-    OpenMP, MPI, CUDA, pthreads, Hadoop-style distributed storage and processing.
-
-    Advanced applications.
-
-    Big data analytics, machine learning, computer vision, scientific simulation.
-
-#Real-world problem areas
-
-These are the kinds of problems PDC is used to solve in industry and research: large-scale data processing, scientific simulation, machine learning training, computer vision pipelines, distributed storage, cloud services, and HPC workloads.
-
-    Search engines and indexing.
-
-    Financial risk and pricing simulation.
-
-    Weather and climate modeling.
-
-    Genomics and bioinformatics.
-
-    Video processing and rendering.
-
-    Real-time recommendation systems.
-
-    Distributed databases and storage.
-
-    Large-scale AI/ML training.
-
-    Fraud detection and anomaly detection.
-
-    IoT and sensor-data aggregation.
-
-#Technologies to know
-
-A practical PDC toolkit includes classic and modern technologies: OpenMP for shared-memory parallelism, MPI for message passing, CUDA for GPUs, pthreads for threading, Hadoop-style distributed data systems, and cloud platforms for elastic distributed execution.
-
-    Old/classic: vector processing, multiprocessors, pipeline and array processors, shared-memory SMP systems.
-
-    Still important: OpenMP, MPI, pthreads, NUMA-aware programming.
-
-    Modern: GPUs, CUDA, heterogeneous computing, cloud computing, distributed storage, big data frameworks.
-
-    Conceptual models: consistency, atomicity, consensus, synchronization, fault tolerance, load balancing.
-
-##Fast study order
-
-    Basic definitions and performance metrics.
-
-    Hardware architecture and memory hierarchy.
-
-    Parallel programming models.
-
-    Synchronization and communication.
-
-    Parallel algorithm design patterns.
-
-    Distributed system models.
-
-    Cloud, HPC, and storage systems.
-
-    Optimization, profiling, and benchmarking.
-
-    Fault tolerance and consistency.
-
-    Frameworks and real-world case studies.
-
-What you should be able to do
-
-By the end, you should be able to take a problem, decide whether it should be parallelized or distributed, choose the right model, map it to hardware, implement it with a suitable framework, and reason about scalability, correctness, and performance.
+## End-state check
+Given any new problem, you should be able to: decide parallel vs distributed vs both → pick a programming/communication model → map it to the right hardware → implement with a suitable framework → reason about scalability, correctness, and fault tolerance.
